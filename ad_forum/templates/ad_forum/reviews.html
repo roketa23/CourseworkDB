@@ -1,0 +1,35 @@
+{% extends 'ad_forum/base.html' %}
+
+{% block content %}
+<h1 style="margin-right: 20px">{{ title }} к посту "{{ post.name }}"</h1>
+
+      {% if user.is_authenticated %}
+         <form id = "centerLayer" method="POST" action= "{% url 'add_review' post.id %}">
+            {% csrf_token %}
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="review_text" id="floatingInput" style="width: 500px">
+              <label for="floatingInput">Отзыв</label>
+            </div>
+            <button type="submit" class="btn btn-light">Отправить</button>
+        </form>
+      {% else %}
+          <p>Чтобы оставить отзыв авторизуйтесь на сайте</p>
+      {% endif %}
+
+
+
+
+
+    {% for r in reviews %}
+    <div class="post" style="background-color: #f5f5dc; font-size: 25px;  margin: 20px 50% 20px 20px ">
+       <p>{{ r.text }}</p>
+       <p>{{ r.date }}</p>
+        <p>Колическво лайков - {{ r.likes_count }}</p>
+        <p>Колическво дизлайков - {{ r.dislikes_count }}</p>
+
+        <button type="button" class="btn btn-success"><a style="text-decoration: none; color: #FFFFFF;" href="{% url 'add_like_review' r.id %}">Лайк</a></button>
+        <button type="button" class="btn btn-danger"><a  style="text-decoration: none; color: #FFFFFF;" href="{% url 'add_dislike_review' r.id %}">Дислайк</a></button>
+    </div>
+    {% endfor %}
+
+{% endblock %}

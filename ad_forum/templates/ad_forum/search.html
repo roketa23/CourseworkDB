@@ -1,0 +1,24 @@
+{% extends 'ad_forum/base.html' %}
+{% load static %}
+
+{% block content %}
+    {{ tittle }}
+
+    <form id = "centerLayer" form method="GET" action="{% url 'check_search_bar' %}">
+     {% csrf_token %}
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" name = "search_name" id = "search_input" style="width: 600px">
+      <label >Введите название публикации или имя публикатора.</label>
+    </div>
+     <button type="submit" class="btn btn-light" id="search_btn">Поиск</button>
+
+    </form>
+{% endblock %}
+
+{% block add_script %}
+    <script src="{% static "ad_forum/js/search.js" %}">
+
+    </script>
+{% endblock %}
+

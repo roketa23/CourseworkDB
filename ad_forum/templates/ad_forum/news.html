@@ -1,0 +1,13 @@
+{% extends 'ad_forum/base.html' %}
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+
+{% for n in news %}
+    <h4>{{ n.title }}</h4>
+    <div class="p-3 mb-2 bg-light text-dark" style="width: 50%" >{{ n.text }}</div>
+{% endfor %}
+
+
+{% endblock %}

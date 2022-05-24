@@ -1,0 +1,16 @@
+{% extends 'ad_forum/base.html' %}
+{% block content %}
+<h1>{{ title }}</h1>
+
+<div class="post" style="background-color: #f5f5dc; font-size: 25px; margin: 20px 50% 20px 20px">
+    <li><h2>{{ post.name }}</h2></li>
+    <p>Рейтинг - {{ post.rating }}</p>
+    <p>Постер</p>
+    <img src="{{ post.poster.url }}"/>
+    <p>Дата публикации - {{ post.date_of_public }}</p>
+    <p>Адресс - {{ post.address }}</p>
+    <p>Тип - {{ post.type }}</p>
+    <p>Опубликовавший - {{ post.director.full_name }}</p>
+    <p>Компания - {{ post.company }}</p>
+</div>
+{% endblock %}

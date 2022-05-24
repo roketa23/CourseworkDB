@@ -1,0 +1,25 @@
+{% extends 'ad_forum/base.html' %}
+
+{% block content %}
+
+    <h1>{{ title }}</h1>
+<ol>
+{% for m in posts %}
+    <div class="post" style="background-color: #f5f5dc; font-size: 25px; margin: 20px 50% 20px 20px">
+        <li><a href="{% url 'one_post' m.id%}" style="text-decoration: none; color: black"><h2>{{ m.name }}</h2></a></li>
+        <p>Рейтинг - {{ m.rating }}</p>
+        <p>Постер</p>
+        <img src="{{ m.poster.url }}"/>
+        <p>Дата публикации - {{ m.date_of_public }}</p>
+        <p>Адресс - {{ m.address }}</p>
+        <p>Тип - {{ m.type }}</p>
+        <p>Опубликовавший - {{ m.director.full_name }}</p>
+        <p>Компания - {{ m.company }}</p>
+
+    <button type="button" class="btn btn-success"><a style="text-decoration: none; color: white" href="{% url 'reviews' m.id %}">Посмотреть отзывы</a></button>
+    </div>
+{% endfor %}
+</ol>
+
+
+{% endblock %}
